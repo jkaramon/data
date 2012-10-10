@@ -159,14 +159,17 @@ DS.Model = Ember.Object.extend(Ember.Evented, {
         cachedValue = this.cacheFor(name);
 
         if (cachedValue) {
-          var key = name,
-              ids = hasMany[key] || [];
+          var key = association.options.key || get(this, 'namingConvention').keyToJSONKey(name),
+              ids = data.get(key) || [];
 
           var clientIds;
-
-          clientIds = Ember.EnumerableUtils.map(ids, function(id) {
-            return store.clientIdForId(association.type, id);
-          });
+          if(association.options.embedded) {
+            clientIds = store.loadMany(association.type, ids).clientIds;
+          } else {
+            clientIds = Ember.EnumerableUtils.map(ids, function(id) {
+              return store.clientIdForId(association.type, id);
+            });
+          }
 
           set(cachedValue, 'content', Ember.A(clientIds));
         }
@@ -423,6 +426,7 @@ var storeAlias = function(methodName) {
 
 DS.Model.reopenClass({
   isLoaded: storeAlias('recordIsLoaded'),
+  all: storeAlias('all'),
   find: storeAlias('find'),
   filter: storeAlias('filter'),
 
