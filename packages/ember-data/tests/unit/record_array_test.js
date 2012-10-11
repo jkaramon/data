@@ -64,12 +64,7 @@ test("a loaded record is removed from a record array when it is deleted", functi
 test("a newly created record is removed from a record array when it is deleted", function() {
   var store = DS.Store.create(),
       recordArray;
-
-<<<<<<< HEAD
-  recordArray = store.find(Person);
-=======
   recordArray = store.all(Person);
->>>>>>> 2c331ea44b349af217f36dcedad6bedb7fd9ca9f
 
   var scumbag = store.createRecord(Person, {
     name: "Scumbag Dale"

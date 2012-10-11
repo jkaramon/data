@@ -424,11 +424,7 @@ test("records inside a collection view should have their ids updated", function(
   });
 
   var container = Ember.CollectionView.create({
-<<<<<<< HEAD
-    content: store.find(Person)
-=======
     content: store.all(Person)
->>>>>>> 2c331ea44b349af217f36dcedad6bedb7fd9ca9f
   });
 
   container.appendTo('#qunit-fixture');

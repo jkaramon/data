@@ -1127,20 +1127,11 @@ DS.Store = Ember.Object.extend({
 
   /**
     @private
-<<<<<<< HEAD
-
-    This method is invoked if the `filterFunction` property is
-    changed on a `DS.FilteredRecordArray`.
-
-    It essentially re-runs the filter from scratch. This same
-    method is invoked when the filter is created in th first place.
-=======
   
     This function helps populate (or depopulate) a recordArray by going through
     all known clientIds for the given type and testing them against the filter.
     The decision to add or remove is handled by updateRecordArray(), but this
     prepares the appropriate data needed for each check.
->>>>>>> 2c331ea44b349af217f36dcedad6bedb7fd9ca9f
   */
   updateRecordArrayFilter: function(array, type, filter) {
     var typeMap = this.typeMapFor(type),
@@ -1204,20 +1195,6 @@ DS.Store = Ember.Object.extend({
     }
   },
 
-<<<<<<< HEAD
-  /**
-    @private
-
-    Update an individual filter.
-
-    @param {DS.FilteredRecordArray} array
-    @param {Function} filter
-    @param {Class} type
-    @param {Number|String} clientId
-  */
-  updateRecordArray: function(array, filter, type, clientId) {
-    var shouldBeInArray, record;
-=======
 
   /**
     @private
@@ -1232,7 +1209,6 @@ DS.Store = Ember.Object.extend({
   */
   updateRecordArray: function(recordArray, filter, type, clientId, dataProxy) {
     var shouldBeInArray;
->>>>>>> 2c331ea44b349af217f36dcedad6bedb7fd9ca9f
 
     if (!filter) {
       shouldBeInArray = true;
